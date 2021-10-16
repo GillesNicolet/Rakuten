@@ -1,13 +1,32 @@
 # -*- coding: utf-8 -*-
 """
-Spyder Editor
+Projet RakuPy
 
-This is a temporary script file.
+Application Streamlit
 """
 
 import streamlit as st
 
+# Barre latérale
+st.sidebar.title('RakuPy')
+st.sidebar.subheader('Menu')
+liste_choix = ['Le projet',
+               'Dataset',
+               'Le modèle',
+               'Demo']
+choix = st.sidebar.selectbox()
 
-st.title('Projet RakuPy')
+
+
+
+
+#st.write('')
+
+#st.dataframe('')
+
+#st.cache()
+#def train_model():
+    
+#    return
 
 
