@@ -59,7 +59,7 @@ if choix==liste_choix[3]:
 
 text = st.text_input("Intitulé de l'article")
 
-image = 
+#image = 
 
 #st.cache()
 #def train_model():
