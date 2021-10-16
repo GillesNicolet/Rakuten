@@ -14,7 +14,7 @@ liste_choix = ['Le projet',
                'Dataset',
                'Le modèle',
                'Demo']
-choix = st.sidebar.selectbox('Menu',liste_choix)
+choix = st.sidebar.multiselect(liste_choix)
 
 
 
