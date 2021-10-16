@@ -16,13 +16,13 @@ liste_choix = ['Le projet',
                'Demo']
 choix = st.sidebar.radio('',liste_choix)
 
-st.sidebar.info('RakuTeam\n Gilles Nicolet\n Abdelhadi Serbouti \n Benjamin Vignau')
+st.sidebar.info('RakuTeam')
 
-#st.sidebar.text('Gilles Nicolet')
+st.sidebar.info('Gilles Nicolet')
 
-#st.sidebar.text('Abdelhadi Serbouti')
+st.sidebar.info('Abdelhadi Serbouti')
 
-#st.sidebar.text('Benjamin Vignau')
+st.sidebar.info('Benjamin Vignau')
 
 
 
@@ -57,9 +57,9 @@ if choix==liste_choix[2]:
 if choix==liste_choix[3]:
     st.title('Demo')
 
-text = st.text_input("Intitulé de l'article")
+    text = st.text_input("Intitulé de l'article")
 
-#image = 
+    #image = 
 
 #st.cache()
 #def train_model():
