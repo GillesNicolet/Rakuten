@@ -14,7 +14,7 @@ liste_choix = ['Le projet',
                'Dataset',
                'Le modèle',
                'Demo']
-choix = st.sidebar.multiselect('',liste_choix)
+choix = st.sidebar.radio('Menu',liste_choix)
 
 
 
