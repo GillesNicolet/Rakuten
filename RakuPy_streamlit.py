@@ -7,7 +7,7 @@ Application Streamlit
 
 import streamlit as st
 
-# Barre latérale
+##### Barre latérale #####
 st.sidebar.title('RakuPy')
 st.sidebar.subheader('Menu')
 liste_choix = ['Le projet',
@@ -16,23 +16,44 @@ liste_choix = ['Le projet',
                'Demo']
 choix = st.sidebar.radio('',liste_choix)
 
+st.sidebar.code('RakuTeam')
 
+st.sidebar.mardown('Gilles Nicolet')
+
+st.sidebar.mardown('Abdelhadi Serbouti')
+
+st.sidebar.mardown('Benjamin Vignau')
+
+
+
+##### Présentation du projet #####
 if choix==liste_choix[0]:
     st.title('Le projet RakuPy')
     st.subheader("Classification automatique d'articles e-commerce")
 
 #st.write('')
 
+
+
+
+##### Description du jeu de données #####
 if choix==liste_choix[1]:
     st.title('Dataset')
 
 #st.dataframe('')
 
+   
     
+    
+##### Description du modèle ######
 if choix==liste_choix[2]:
     st.title('Le modèle')
  
     
+    
+    
+    
+###### Demo #####    
 if choix==liste_choix[3]:
     st.title('Demo')
 
