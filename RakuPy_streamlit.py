@@ -39,7 +39,14 @@ st.sidebar.info('''
 if choix==liste_choix[0]:
     st.title('Le projet RakuPy')
     st.subheader("Classification automatique d'articles e-commerce")
-    st.image('/Figures/Figure_Rakuten.png')
+    #@st.cache
+    #def load_figure():
+    #    bikes_data_path = Path() / 'data/bike_sharing_demand_train.csv'
+    #    data = pd.read_csv(bikes_data_path)
+    #    return data
+
+    st.image('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
+    
     st.write('La catégorisation des produits est un problème important et complexe pour les sites d’e-commerce. En effet, il est indispensable de pouvoir proposer aux clients des produits correspondants à leurs recherches ainsi que leur faire des recommandations personnalisées aussi pertinentes que possible.')
     st.write('Une des difficultés de cette tâche est que les grandes plateformes d’e-commerce regroupent des vendeurs variés (y compris des non professionnels) pouvant décrire des produits similaires de manières très différentes, voire dans des langues différentes. De plus, il existe un grand nombre de catégories possibles pour ces produits.')
     st.write('Ce projet a ainsi pour objectif de proposer un modèle permettant de classer automatiquement les produits provenant d’une plateforme de e-commerce à partir de deux sources : leur image et le texte présentant ces produits.')
@@ -50,6 +57,12 @@ if choix==liste_choix[0]:
 ##### Description du jeu de données #####
 if choix==liste_choix[1]:
     st.title('Jeu de données')
+    
+    #@st.cache
+    #def load_data():
+    #    bikes_data_path = Path() / 'data/bike_sharing_demand_train.csv'
+    #    data = pd.read_csv(bikes_data_path)
+    #    return data
 
 #st.write('Ce projet s’inscrit dans le cadre du concours Rakuten Data Challenge 2020 proposé sur le site challengedata.ens.fr de l’ENS et du Collège de France. Créée au Japon en 1997, Rakuten est une des plus grandes plateformes de commerce en ligne avec plus de 1,3 milliard d’utilisateurs. ')
 
