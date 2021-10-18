@@ -6,7 +6,7 @@ Application Streamlit
 """
 
 import streamlit as st
-import cv2
+from PIL import Image
 
 ##### Barre latérale #####
 st.sidebar.title('RakuPy')
@@ -46,6 +46,8 @@ if choix==liste_choix[0]:
     #    img = cv2.imread('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
     #    return img
     
+    #im = Image.open('image.jpg')
+
     #st.image(load_figure())
     
     st.write('La catégorisation des produits est un problème important et complexe pour les sites d’e-commerce. En effet, il est indispensable de pouvoir proposer aux clients des produits correspondants à leurs recherches ainsi que leur faire des recommandations personnalisées aussi pertinentes que possible.')
