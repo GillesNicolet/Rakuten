@@ -30,9 +30,13 @@ st.sidebar.info('''
                 
                 Benjamin Vignau
                 
+                ______________________________
+                
                 Datascientest
                 
-                DS Bootcamp -- Promotion Août 2021''')
+                https://datascientest.com
+                
+                DS Bootcamp - Promotion Août 2021''')
 
 
 
