@@ -41,12 +41,12 @@ if choix==liste_choix[0]:
     st.title('Le projet RakuPy')
     st.subheader("Classification automatique d'articles e-commerce")
     
-    #@st.cache
-    #def load_figure():
-    #    img = cv2.imread('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
-    #    return img
+    @st.cache
+    def load_figure():
+        #img = cv2.imread('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
+        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
+        return img
     
-    #im = Image.open('image.jpg')
 
     #st.image(load_figure())
     
