@@ -6,8 +6,8 @@ Application Streamlit
 """
 
 import streamlit as st
-#from PIL import Image
-import cv2
+import matplotlib.pyplot as plt
+import matplotlib.image as img
 
 ##### Barre latérale #####
 st.sidebar.title('RakuPy')
@@ -43,12 +43,11 @@ if choix==liste_choix[0]:
     st.subheader("Classification automatique d'articles e-commerce")
     
     @st.cache
-    def load_figure():
-        img = cv2.imread('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
-        #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
-        return img
+    def load_figure_1():
+        image = img.imread('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
+        return image
     
-    st.image(load_figure())
+    st.image(plt.imshow(load_figure_1()))
     
     st.write('La catégorisation des produits est un problème important et complexe pour les sites d’e-commerce. En effet, il est indispensable de pouvoir proposer aux clients des produits correspondants à leurs recherches ainsi que leur faire des recommandations personnalisées aussi pertinentes que possible.')
     st.write('Une des difficultés de cette tâche est que les grandes plateformes d’e-commerce regroupent des vendeurs variés (y compris des non professionnels) pouvant décrire des produits similaires de manières très différentes, voire dans des langues différentes. De plus, il existe un grand nombre de catégories possibles pour ces produits.')
