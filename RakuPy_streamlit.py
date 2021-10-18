@@ -20,21 +20,16 @@ choix = st.sidebar.radio('',liste_choix)
 st.sidebar.subheader('RakuTeam')
 
 st.sidebar.info('''
-                Gilles Nicolet 
-                
+                Gilles Nicolet        
                 https://www.linkedin.com/in/gilles-nicolet/
                 
-                Abdelhadi Serbouti 
-                
+                Abdelhadi Serbouti            
                 https://www.linkedin.com/in/abdelhadi-serbouti-a083779a/
                 
-                Benjamin Vignau
-                
-                https://fr.linkedin.com/in/benjamin-vignau-0479b916
-                
+                Benjamin Vignau             
+                https://fr.linkedin.com/in/benjamin-vignau-0479b916   
                 ______________________________  
-                https://datascientest.com
-                
+                https://datascientest.com     
                 Formation DS Bootcamp 
                 Promotion Août 2021''')
 
