@@ -6,7 +6,7 @@ Application Streamlit
 """
 
 import streamlit as st
-import cv2
+#import cv2
 
 ##### Barre latérale #####
 st.sidebar.title('RakuPy')
