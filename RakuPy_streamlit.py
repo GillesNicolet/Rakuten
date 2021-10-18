@@ -10,19 +10,16 @@ import streamlit as st
 ##### Barre latérale #####
 st.sidebar.title('RakuPy')
 st.sidebar.subheader('Menu')
-liste_choix = ['Le projet',
-               'Dataset',
-               'Le modèle',
-               'Demo']
+liste_choix = ['Le projet RakuPy',
+               'Jeu de données',
+               'Data visualization',
+               'Notre modèle',
+               'Démo']
 choix = st.sidebar.radio('',liste_choix)
 
 st.sidebar.subheader('RakuTeam')
 
-st.sidebar.info('Gilles Nicolet')
-
-st.sidebar.info('Abdelhadi Serbouti')
-
-st.sidebar.info('Benjamin Vignau')
+st.sidebar.info('Datascientest \n Promotion DS Bootcamp - Août \n Gilles Nicolet Abdelhadi Serbouti Benjamin Vignau')
 
 
 
@@ -38,24 +35,34 @@ if choix==liste_choix[0]:
 
 ##### Description du jeu de données #####
 if choix==liste_choix[1]:
-    st.title('Dataset')
+    st.title('Jeu de données')
 
 #st.dataframe('')
 
    
     
     
-##### Description du modèle ######
+    
+##### Datasiz ######
 if choix==liste_choix[2]:
-    st.title('Le modèle')
+    st.title('Data visualization')
+ 
+    
+    
+    
+    
+    
+##### Datasiz ######
+if choix==liste_choix[3]:
+    st.title('Notre modèle')
  
     
     
     
     
 ###### Demo #####    
-if choix==liste_choix[3]:
-    st.title('Demo')
+if choix==liste_choix[4]:
+    st.title('Démo')
 
     text = st.text_input("Intitulé de l'article")
 
