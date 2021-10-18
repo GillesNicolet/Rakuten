@@ -22,12 +22,17 @@ st.sidebar.subheader('RakuTeam')
 st.sidebar.info('''
                 Gilles Nicolet 
                 
+                https://www.linkedin.com/in/gilles-nicolet/
+                
                 Abdelhadi Serbouti 
+                
+                https://www.linkedin.com/in/abdelhadi-serbouti-a083779a/
                 
                 Benjamin Vignau
                 
                 Datascientest
-                Promotion DS Bootcamp Août 2021''')
+                
+                DS Bootcamp -- Promotion Août 2021''')
 
 
 
