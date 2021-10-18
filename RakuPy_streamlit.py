@@ -6,7 +6,8 @@ Application Streamlit
 """
 
 import streamlit as st
-from PIL import Image
+#from PIL import Image
+import cv2
 
 ##### Barre latérale #####
 st.sidebar.title('RakuPy')
@@ -43,11 +44,11 @@ if choix==liste_choix[0]:
     
     @st.cache
     def load_figure():
-        #img = cv2.imread('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
-        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
+        img = cv2.imread('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
+        #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
         return img
     
-    st.image(load_figure().show())
+    st.image(load_figure())
     
     st.write('La catégorisation des produits est un problème important et complexe pour les sites d’e-commerce. En effet, il est indispensable de pouvoir proposer aux clients des produits correspondants à leurs recherches ainsi que leur faire des recommandations personnalisées aussi pertinentes que possible.')
     st.write('Une des difficultés de cette tâche est que les grandes plateformes d’e-commerce regroupent des vendeurs variés (y compris des non professionnels) pouvant décrire des produits similaires de manières très différentes, voire dans des langues différentes. De plus, il existe un grand nombre de catégories possibles pour ces produits.')
