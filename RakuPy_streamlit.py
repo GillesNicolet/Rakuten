@@ -19,11 +19,12 @@ choix = st.sidebar.radio('',liste_choix)
 
 st.sidebar.subheader('RakuTeam')
 
-st.sidebar.info('''Datascientest \n 
-                Promotion DS Bootcamp - Août \n 
+st.sidebar.info('''
                 Gilles Nicolet 
                 Abdelhadi Serbouti 
-                Benjamin Vignau''')
+                Benjamin Vignau
+                Datascientest
+                Promotion DS Bootcamp Août 2021''')
 
 
 
