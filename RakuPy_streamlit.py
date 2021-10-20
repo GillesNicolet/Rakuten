@@ -6,8 +6,9 @@ Application Streamlit
 """
 
 import streamlit as st
-import matplotlib.pyplot as plt
-import matplotlib.image as img
+import pandas as pd
+#import matplotlib.pyplot as plt
+#import matplotlib.image as img
 
 ##### Barre latérale #####
 st.sidebar.title('RakuPy')
@@ -42,10 +43,10 @@ if choix==liste_choix[0]:
     st.title('Le projet RakuPy')
     st.subheader("Classification automatique d'articles e-commerce")
     
-    @st.cache
-    def load_figure_1():
-        image = img.imread('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
-        return image
+    #@st.cache
+    #def load_figure_1():
+    #    image = img.imread('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png')
+    #    return image
     
     #st.image(plt.imshow(load_figure_1()))
     
