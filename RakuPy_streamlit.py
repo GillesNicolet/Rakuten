@@ -84,6 +84,7 @@ data_train, data_valid, y_train, y_valid = train_test_split(df,target,test_size=
 def creation_chemin(col1,col2):
      return '/Volumes/GoogleDrive/Mon Drive/Data/images/image_train/image_' + str(col1) + '_product_' + str(col2) + '.jpg'
 data_valid['img_paths'] = np.vectorize(creation_chemin)(data_valid['imageid'],data_valid['productid'])
+data_train['img_paths'] = np.vectorize(creation_chemin)(data_train['imageid'],data_train['productid'])
 
 
 ##### Correspondance entre les indices et les classes ####
@@ -141,8 +142,7 @@ if choix==liste_choix[0]:
         img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png') 
         return img
     
-    st.image(load_figure_1())
-    st.markdown("*Capture d'écran du site de Rakuten France* : nous pouvons voir que la classification des produits en catégories et en sous-catégories est omniprésente.")
+    st.image(load_figure_1(),caption="Capture d'écran du site de Rakuten France : nous pouvons voir que la classification des produits en catégories et en sous-catégories est omniprésente.")
 
 
 
@@ -161,7 +161,7 @@ if choix==liste_choix[1]:
                 * _prdtypecode_ : codes des catégories des produits (variable cible)
                 ''')
     
-    st.dataframe(data[:100])
+    st.dataframe(data[:10000])
 
 
     
@@ -178,8 +178,7 @@ if choix==liste_choix[2]:
         img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/countplot_product_type_code.jpeg') 
         return img
     
-    st.image(load_figure_2())
-    st.markdown("*Figure : nombre de produits par catégorie*")
+    st.image(load_figure_2(),caption="Figure : nombre de produits par catégorie")
 
     st.markdown("Comme nous pouvons le remarquer en parcourant les données, beaucoup de vendeurs ne remplissent pas la partie description. Environ 35% des produits n'ont pas de description.")
     
@@ -197,8 +196,7 @@ if choix==liste_choix[2]:
             img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_1.jpeg') 
             return img
     
-        st.image(load_figure_3_1())
-        st.markdown('''*Figure : nuages de mots pour les 9 premières catégories.*''')
+        st.image(load_figure_3_1(),caption="Figure : nuages de mots pour les 9 premières catégories")
         
     if choix_select==options_selectbox[1]:
         @st.cache
@@ -206,8 +204,7 @@ if choix==liste_choix[2]:
             img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_2.jpeg') 
             return img
     
-        st.image(load_figure_3_2())
-        st.markdown('''*Figure : nuages de mots pour les 9 catégories du milieu.*''')
+        st.image(load_figure_3_2(),caption="Figure : nuages de mots pour les 9 catégories du milieu")
         
     if choix_select==options_selectbox[2]:
         @st.cache
@@ -215,18 +212,21 @@ if choix==liste_choix[2]:
             img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_3.jpeg') 
             return img
     
-        st.image(load_figure_3_3())
-        st.markdown('''*Figure : nuages de mots pour les 9 dernières catégories.*''')
+        st.image(load_figure_3_3(),caption="Figure : nuages de mots pour les 9 dernières catégories")
 
     st.markdown('Les images accompagnant les produits de la plateforme sont très variées. La qualité des images est très inégale. Certaines peuvent présenter des bordures blanches.')
     
-    indice_produit_0 = st.slider('Choisissez un produit',1,13812)
+    indice_produit_0 = st.slider('Choisissez un produit',1,71104)
 
-    im_illustr = plt.imread(data_valid.iloc[indice_produit_0-1,4])
-    cat_illustr = y_valid.iloc[indice_produit_0-1,0]
-    st.text("Catégorie " + str(cat_illustr))
-    st.image(im_illustr)
-    st.markdown("*Figure : Images d'illustration du jeu de données.*")
+    im_illustr = plt.imread(data_train.iloc[indice_produit_0-1,4])
+    text_illustr = data_train.iloc[indice_produit_0-1,0]
+    cat_illustr = y_train.iloc[indice_produit_0-1,0]
+    classe_illustr = correspondance.iloc[:,1][correspondance.iloc[:,0]==str(cat_illustr)].iloc[0]
+
+    st.text("Catégorie " + str(cat_illustr) + " (" + classe_illustr + ")")
+    st.text(text_illustr)
+    st.image(im_illustr,caption="Figure : Articles du jeu de données avec titre, image et catégorie")
+
 
  
    
@@ -242,8 +242,7 @@ if choix==liste_choix[3]:
         img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/CNN.png') 
         return img
         
-    st.image(load_figure_5())
-    st.markdown("*Figure : Description du modèle CNN pour le texte*")
+    st.image(load_figure_5(),caption="Figure : Description du modèle CNN pour le texte")
     
     st.markdown('''La composante image de notre modèle est formée par la partie convolutionnelle du modèle EfficientNetB4 préentraînée sur le célèbre jeu de données Imagenet.
                 à laquelle nous avons rajouté une couche dense de 512 neurones.''')
@@ -253,8 +252,7 @@ if choix==liste_choix[3]:
         img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/EfficientNetB4.png') 
         return img
         
-    st.image(load_figure_6(),width=200)
-    st.markdown("*Figure : Description du modèle EfficientNetB4 pour les images*")
+    st.image(load_figure_6(),width=200,caption="Figure : Description du modèle EfficientNetB4 pour les images")
  
     st.markdown('''Pour former notre modèle mixte textes-images nous concaténons ces deux composantes juste avant la couche dense de sortie.
                 La différence de taux entre les couches de Dropout de sortie des deux parties du modèle (0.4 pour les textes et 0.2 pour les images)
@@ -265,8 +263,7 @@ if choix==liste_choix[3]:
         img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Modele_mixte.png') 
         return img
         
-    st.image(load_figure_7(),width=300)
-    st.markdown("*Figure : Description du modèle mixte*")
+    st.image(load_figure_7(),width=300,caption="Figure : Description du modèle mixte")
     
     
     
@@ -286,8 +283,7 @@ if choix==liste_choix[4]:
     def load_figure_8():
         img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Resultats.png') 
         return img
-    st.image(load_figure_8(),width=500)
-    st.markdown("*Figure : Scores du modèle*")
+    st.image(load_figure_8(),width=500,caption="Figure : Scores du modèle")
 
     st.markdown('''La seconde figure montre la matrice de confusion. Nous pouvons remarquer que la principale difficulté pour notre modèle
                 est de distinguer les catégories voisines comme les deux catégories de jouets 1280 et 1281 ou les deux catégories de livres 10 et 2705.''')
