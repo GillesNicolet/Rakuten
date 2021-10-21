@@ -189,15 +189,35 @@ if choix==liste_choix[2]:
                 En complètant cette analyse des mots les plus fréquents par un visualisation de quelques images pour chacune des catégories, nous avons pu mettre des mots sur toutes les catégories.
                 ''')
     
-    @st.cache
-    def load_figure_3():
-        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_3.jpeg') 
-        return img
+    options_selectbox = ['Catégories 1-9','Catégories 10-8','Catégories 19-27']
+    choix_select = st.selectbox('Catégories pour les nuages de mots',options_selectbox)
+    if choix_select==options_selectbox[0]:
+        @st.cache
+        def load_figure_3_1():
+            img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_1.jpeg') 
+            return img
     
-    st.image(load_figure_3())
-    st.markdown('''*Figure : nuages de mots pour 9 catégories. 
-                Les catégories Papèterie et Piscines peuvent être facilement retrouvées. 
-                Les catégories 2705 et 2905, qui contiennent des livres et des jeux vidéos en téléchargement, sont par contre difficilement identifiables avec le nuage de mots.*''')
+        st.image(load_figure_3_1())
+        st.markdown('''*Figure : nuages de mots pour les 9 premières catégories.*''')
+        
+    if choix_select==options_selectbox[1]:
+        @st.cache
+        def load_figure_3_2():
+            img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_2.jpeg') 
+            return img
+    
+        st.image(load_figure_3_2())
+        st.markdown('''*Figure : nuages de mots pour les 9 catégories du milieu.*''')
+        
+    if choix_select==options_selectbox[2]:
+        @st.cache
+        def load_figure_3_3():
+            img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_3.jpeg') 
+            return img
+    
+        st.image(load_figure_3_3())
+        st.markdown('''*Figure : nuages de mots pour les 9 dernières catégories.*''')
+    
 
     @st.cache
     def load_figure_4():
