@@ -104,7 +104,7 @@ liste_choix = ['Le projet RakuPy',
                'Analyse du jeu de données',
                'Notre modèle',
                'Résultats',
-               'Prédictions sur le jeu de test',
+               'Prédictions sur le jeu de validation',
                'Démo']
 choix = st.sidebar.radio('',liste_choix)
 
@@ -156,7 +156,7 @@ if choix==liste_choix[1]:
     st.markdown('Les colonnes de ce tableau sont :')
     st.markdown(''' 
                 * _designation_ : les titres des produits
-                * _description_ : les descriptions des produits
+                * _description_ : les descriptions des produits (pas utilisées dans notre modèle)
                 * Les colonnes _productid_ et _imageid_ permettent d’accéder aux noms des fichiers images
                 * _prdtypecode_ : codes des catégories des produits (variable cible)
                 ''')
@@ -189,7 +189,7 @@ if choix==liste_choix[2]:
                 En complètant cette analyse des mots les plus fréquents par un visualisation de quelques images pour chacune des catégories, nous avons pu mettre des mots sur toutes les catégories.
                 ''')
     
-    options_selectbox = ['Catégories 1-9','Catégories 10-8','Catégories 19-27']
+    options_selectbox = ['Catégories 1-9','Catégories 10-18','Catégories 19-27']
     choix_select = st.selectbox('Catégories pour les nuages de mots',options_selectbox)
     if choix_select==options_selectbox[0]:
         @st.cache
@@ -217,17 +217,16 @@ if choix==liste_choix[2]:
     
         st.image(load_figure_3_3())
         st.markdown('''*Figure : nuages de mots pour les 9 dernières catégories.*''')
-    
 
-    @st.cache
-    def load_figure_4():
-        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Neuf_images.jpg') 
-        return img
-    
     st.markdown('Les images accompagnant les produits de la plateforme sont très variées. La qualité des images est très inégale. Certaines peuvent présenter des bordures blanches.')
     
-    st.image(load_figure_4())
-    st.markdown("*Figure : Images d'illustration pour les neuf premiers articles du jeu de données.*")
+    indice_produit_0 = st.slider('Choisissez un produit',1,13812)
+
+    im_illustr = plt.imread(data_valid.iloc[indice_produit_0-1,4])
+    cat_illustr = y_valid.iloc[indice_produit_0-1,0]
+    st.text("Catégorie " + str(cat_illustr))
+    st.image(im_illustr)
+    st.markdown("*Figure : Images d'illustration du jeu de données.*")
 
  
    
@@ -303,9 +302,9 @@ if choix==liste_choix[4]:
     
 ###### Demo sur le jeu de test #####    
 if choix==liste_choix[5]:
-    st.title('Prédictions sur le jeu de test')
+    st.title('Prédictions sur le jeu de validation')
     
-    indice_produit = st.slider('Choisissez un produit dans le jeu de test',1,13812)
+    indice_produit = st.slider('Choisissez un produit dans le jeu de validation',1,13812)
 
     ##### Chargement du Tokenizer #####
     @st.cache(show_spinner=False)
