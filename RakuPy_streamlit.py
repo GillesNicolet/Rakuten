@@ -323,7 +323,10 @@ if choix==liste_choix[5]:
     ##### Chargement du modele #####
     #@st.cache(hash_funcs={'keras.utils.object_identity.ObjectIdentityDictionary': lambda _: None})
     def load_nn():
-        model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
+        url = 'https://drive.google.com/file/d/10-i9BY56IiO-4lApwLv4vMJnqioouEvj/view?usp=sharing'
+        path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+        model = load_model(path)
+        #model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
         return model
 
     model = load_nn()
@@ -368,7 +371,10 @@ if choix==liste_choix[6]:
         ##### Chargement du modele #####
         #@st.cache(hash_funcs={'keras.utils.object_identity.ObjectIdentityDictionary': lambda _: None})
         def load_nn():
-            model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
+            url = 'https://drive.google.com/file/d/10-i9BY56IiO-4lApwLv4vMJnqioouEvj/view?usp=sharing'
+            path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+            model = load_model(path)
+            #model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
             return model
     
         model = load_nn()
