@@ -48,13 +48,15 @@ from joblib import dump, load
 
 @st.cache
 def load_data():
-    features = pd.read_csv("/Users/gilles/Documents/GitHub/Rakuten/Data/textes/X_train.csv",index_col=0)
+    #features = pd.read_csv("/Users/gilles/Documents/GitHub/Rakuten/Data/textes/X_train.csv",index_col=0)
+    features = pd.read_csv("/Data/textes/X_train.csv",index_col=0)
     return features
 df = load_data()
 
 @st.cache
 def load_target():
-    y_tr = pd.read_csv("/Users/gilles/Documents/GitHub/Rakuten/Data/y_train.csv",index_col=0)
+    #y_tr = pd.read_csv("/Users/gilles/Documents/GitHub/Rakuten/Data/y_train.csv",index_col=0)
+    y_tr = pd.read_csv("/Data/y_train.csv",index_col=0)
     return y_tr
 target = load_target()
 
@@ -139,7 +141,8 @@ if choix==liste_choix[0]:
 
     @st.cache
     def load_figure_1():
-        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png') 
+        #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Figure_Rakuten.png') 
+        img = Image.open('/Figures/Figure_Rakuten.png') 
         return img
     
     st.image(load_figure_1(),caption="Capture d'écran du site de Rakuten France : nous pouvons voir que la classification des produits en catégories et en sous-catégories est omniprésente.")
@@ -175,7 +178,8 @@ if choix==liste_choix[2]:
     
     @st.cache
     def load_figure_2():
-        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/countplot_product_type_code.jpeg') 
+        #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/countplot_product_type_code.jpeg') 
+        img = Image.open('/Figures/countplot_product_type_code.jpeg') 
         return img
     
     st.image(load_figure_2(),caption="Figure : nombre de produits par catégorie")
@@ -193,7 +197,8 @@ if choix==liste_choix[2]:
     if choix_select==options_selectbox[0]:
         @st.cache
         def load_figure_3_1():
-            img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_1.jpeg') 
+            #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_1.jpeg') 
+            img = Image.open('/Figures/wordcloud_categories_1.jpeg') 
             return img
     
         st.image(load_figure_3_1(),caption="Figure : nuages de mots pour les 9 premières catégories")
@@ -201,7 +206,8 @@ if choix==liste_choix[2]:
     if choix_select==options_selectbox[1]:
         @st.cache
         def load_figure_3_2():
-            img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_2.jpeg') 
+            #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_2.jpeg') 
+            img = Image.open('/Figures/wordcloud_categories_2.jpeg') 
             return img
     
         st.image(load_figure_3_2(),caption="Figure : nuages de mots pour les 9 catégories du milieu")
@@ -209,7 +215,8 @@ if choix==liste_choix[2]:
     if choix_select==options_selectbox[2]:
         @st.cache
         def load_figure_3_3():
-            img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_3.jpeg') 
+            #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/wordcloud_categories_3.jpeg') 
+            img = Image.open('/Figures/wordcloud_categories_3.jpeg') 
             return img
     
         st.image(load_figure_3_3(),caption="Figure : nuages de mots pour les 9 dernières catégories")
@@ -239,7 +246,8 @@ if choix==liste_choix[3]:
 
     @st.cache
     def load_figure_5():
-        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/CNN.png') 
+        #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/CNN.png') 
+        img = Image.open('/Figures/CNN.png') 
         return img
         
     st.image(load_figure_5(),caption="Figure : Description du modèle CNN pour le texte")
@@ -249,7 +257,8 @@ if choix==liste_choix[3]:
     
     @st.cache
     def load_figure_6():
-        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/EfficientNetB4.png') 
+        #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/EfficientNetB4.png') 
+        img = Image.open('/Figures/EfficientNetB4.png') 
         return img
         
     st.image(load_figure_6(),width=200,caption="Figure : Description du modèle EfficientNetB4 pour les images")
@@ -260,7 +269,8 @@ if choix==liste_choix[3]:
                 
     @st.cache
     def load_figure_7():
-        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Modele_mixte.png') 
+        #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Modele_mixte.png') 
+        img = Image.open('/Figures/Modele_mixte.png') 
         return img
         
     st.image(load_figure_7(),width=300,caption="Figure : Description du modèle mixte")
@@ -281,7 +291,8 @@ if choix==liste_choix[4]:
     
     @st.cache
     def load_figure_8():
-        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Resultats.png') 
+        #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Resultats.png') 
+        img = Image.open('/Figures/Resultats.png') 
         return img
     st.image(load_figure_8(),width=500,caption="Figure : Scores du modèle")
 
@@ -290,7 +301,8 @@ if choix==liste_choix[4]:
 
     @st.cache
     def load_figure_9():
-        img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Confusion_matrix.jpg') 
+        #img = Image.open('/Users/gilles/Documents/GitHub/Rakuten/Figures/Confusion_matrix.jpg')         
+        img = Image.open('/Figures/Confusion_matrix.jpg') 
         return img
     st.image(load_figure_9(),width=850)
 
