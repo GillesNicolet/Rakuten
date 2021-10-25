@@ -48,13 +48,13 @@ from joblib import dump, load
 
 @st.cache
 def load_data():
-    features = pd.read_csv("/Users/gilles/Documents/Formation_Data_Scientist/Projet/Data/textes/X_train.csv",index_col=0)
+    features = pd.read_csv("/Users/gilles/Documents/GitHub/Rakuten/Data/textes/X_train.csv",index_col=0)
     return features
 df = load_data()
 
 @st.cache
 def load_target():
-    y_tr = pd.read_csv("/Users/gilles/Documents/Formation_Data_Scientist/Projet/Data/y_train.csv",index_col=0)
+    y_tr = pd.read_csv("/Users/gilles/Documents/GitHub/Rakuten/Data/y_train.csv",index_col=0)
     return y_tr
 target = load_target()
 
