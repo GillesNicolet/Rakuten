@@ -305,7 +305,8 @@ if choix==liste_choix[5]:
     ##### Chargement du Tokenizer #####
     @st.cache(show_spinner=False)
     def tokenize():
-        tokenizer = load('/Volumes/GoogleDrive/Mon Drive/Models/tokenizer.joblib') 
+        #tokenizer = load('/Volumes/GoogleDrive/Mon Drive/Models/tokenizer.joblib') 
+        tokenizer = load('Models/tokenizer.joblib') 
         return tokenizer
 
     tokenizer = tokenize()
@@ -375,7 +376,8 @@ if choix==liste_choix[6]:
         ##### Chargement du Tokenizer #####
         @st.cache(show_spinner=False)
         def tokenize():
-            tokenizer = load('/Volumes/GoogleDrive/Mon Drive/Models/tokenizer.joblib') 
+            #tokenizer = load('/Volumes/GoogleDrive/Mon Drive/Models/tokenizer.joblib') 
+            tokenizer = load('Models/tokenizer.joblib') 
             return tokenizer
 
         tokenizer = tokenize()
