@@ -42,7 +42,7 @@ from tensorflow.keras.applications.efficientnet import EfficientNetB4
 from tensorflow.keras import backend as K
 from nltk.tokenize import word_tokenize
 from joblib import dump, load
-from google_drive_downloader import GoogleDriveDownloader as gdd
+import gdown
 
 ##### Chargement des données #####
 
@@ -324,8 +324,9 @@ if choix==liste_choix[5]:
     #@st.cache(hash_funcs={'keras.utils.object_identity.ObjectIdentityDictionary': lambda _: None})
     def load_nn():
         url = 'https://drive.google.com/file/d/10-i9BY56IiO-4lApwLv4vMJnqioouEvj/view?usp=sharing'
-        path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-        model = load_model(path)
+        output = 'EfficientNetB4_CNN_2.h5'
+        gdown.download(url,output,quiet=False)
+        model = load_model('EfficientNetB4_CNN_2.h5')
         #model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
         return model
 
@@ -371,10 +372,11 @@ if choix==liste_choix[6]:
         ##### Chargement du modele #####
         #@st.cache(hash_funcs={'keras.utils.object_identity.ObjectIdentityDictionary': lambda _: None})
         def load_nn():
-            gdd.download_file_from_google_drive(file_id='10-i9BY56IiO-4lApwLv4vMJnqioouEvj',
-                                    dest_path='./Models/EfficientNetB4_CNN_2.h5',
-                                    unzip=False)
-            model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
+            url = 'https://drive.google.com/file/d/10-i9BY56IiO-4lApwLv4vMJnqioouEvj/view?usp=sharing'
+            output = 'EfficientNetB4_CNN_2.h5'
+            gdown.download(url,output,quiet=False)
+            model = load_model('EfficientNetB4_CNN_2.h5')
+            #model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
             return model
     
         model = load_nn()
