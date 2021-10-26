@@ -42,38 +42,7 @@ from tensorflow.keras.applications.efficientnet import EfficientNetB4
 from tensorflow.keras import backend as K
 from nltk.tokenize import word_tokenize
 from joblib import dump, load
-import requests
-
-
-##### Fonction pour charger des fichiers sur Drive #####
-def download_file_from_google_drive(id, destination):
-    URL = "https://docs.google.com/uc?export=download"
-
-    session = requests.Session()
-
-    response = session.get(URL, params = { 'id' : id }, stream = True)
-    token = get_confirm_token(response)
-
-    if token:
-        params = { 'id' : id, 'confirm' : token }
-        response = session.get(URL, params = params, stream = True)
-
-    save_response_content(response, destination)    
-
-def get_confirm_token(response):
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-            return value
-
-    return None
-
-def save_response_content(response, destination):
-    CHUNK_SIZE = 32768
-
-    with open(destination, "wb") as f:
-        for chunk in response.iter_content(CHUNK_SIZE):
-            if chunk: # filter out keep-alive new chunks
-                f.write(chunk)
+from google_drive_downloader import GoogleDriveDownloader as gdd
 
 ##### Chargement des données #####
 
@@ -401,13 +370,11 @@ if choix==liste_choix[6]:
     if clicked_2:
         ##### Chargement du modele #####
         #@st.cache(hash_funcs={'keras.utils.object_identity.ObjectIdentityDictionary': lambda _: None})
-        cloud_model_location = "10-i9BY56IiO-4lApwLv4vMJnqioouEvj"
-
         def load_nn():
-            #from GD_download import download_file_from_google_drive
-            download_file_from_google_drive(cloud_model_location,f_checkpoint)
-            model = load_model(f_checkpoint)
-            #model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
+            gdd.download_file_from_google_drive(file_id='10-i9BY56IiO-4lApwLv4vMJnqioouEvj',
+                                    dest_path='./Models/EfficientNetB4_CNN_2.h5',
+                                    unzip=False)
+            model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
             return model
     
         model = load_nn()
