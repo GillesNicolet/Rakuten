@@ -214,7 +214,7 @@ if choix==liste_choix[2]:
     
     indice_produit_0 = st.slider('Choisissez un produit',1,1000)
 
-    #m_illustr = plt.imread(data.iloc[indice_produit_0-1,5])
+    m_illustr = plt.imread(data.iloc[indice_produit_0-1,5])
     text_illustr = data.iloc[indice_produit_0-1,0]
     cat_illustr = target.iloc[indice_produit_0-1,0]
     classe_illustr = correspondance.iloc[:,1][correspondance.iloc[:,0]==str(cat_illustr)].iloc[0]
@@ -223,8 +223,6 @@ if choix==liste_choix[2]:
     st.text(text_illustr)
     st.image(im_illustr,caption="Figure : Articles du jeu de données avec titre, image et catégorie")
 
-
- 
    
 ##### Présentation du modèle ######
 if choix==liste_choix[3]:
@@ -292,7 +290,7 @@ if choix==liste_choix[4]:
 
     
     
-###### Demo sur le jeu de test #####    
+###### Demo sur le jeu de données #####    
 if choix==liste_choix[5]:
     st.title('Prédictions sur le jeu de données')
     
