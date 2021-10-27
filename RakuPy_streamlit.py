@@ -157,7 +157,7 @@ if choix==liste_choix[1]:
                 * _prdtypecode_ : codes des catégories des produits (variable cible)
                 ''')
     
-    st.dataframe(data.drop('img_paths',axis=1)
+    st.dataframe(data.drop('img_paths',axis=1))
 
 
     
@@ -214,14 +214,14 @@ if choix==liste_choix[2]:
     
     indice_produit_0 = st.slider('Choisissez un produit',1,1000)
 
-    #im_illustr = plt.imread(data.iloc[indice_produit_0-1,5])
+    #m_illustr = plt.imread(data.iloc[indice_produit_0-1,5])
     text_illustr = data.iloc[indice_produit_0-1,0]
     cat_illustr = target.iloc[indice_produit_0-1,0]
     classe_illustr = correspondance.iloc[:,1][correspondance.iloc[:,0]==str(cat_illustr)].iloc[0]
 
     st.text("Catégorie " + str(cat_illustr) + " (" + classe_illustr + ")")
     st.text(text_illustr)
-    #st.image(im_illustr,caption="Figure : Articles du jeu de données avec titre, image et catégorie")
+    st.image(im_illustr,caption="Figure : Articles du jeu de données avec titre, image et catégorie")
 
 
  
