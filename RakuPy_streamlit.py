@@ -12,17 +12,11 @@ import cv2
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-#import seaborn as sns
 import tensorflow as tf
-#import re
-#import unicodedata
 
 from sklearn.model_selection import train_test_split
-#from sklearn.feature_extraction.text import CountVectorizer
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-#from nltk.tokenize.regexp import RegexpTokenizer
-#from nltk.corpus import stopwords
 from tensorflow.keras import Model, Input
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.models import load_model
@@ -48,7 +42,7 @@ import gdown
 
 @st.cache
 def load_data():
-    features = pd.read_csv("Data/textes/X_train.csv",index_col=0)
+    features = pd.read_csv("Data/X_train.csv",index_col=0)
     return features
 df = load_data()
 
@@ -79,12 +73,14 @@ def crop_resize(img):
 
 
 ##### Jeu d'entraînement et jeu de validation #####
-data_train, data_valid, y_train, y_valid = train_test_split(df,target,test_size=13812,stratify=target,random_state=34)
+#data_train, data_valid, y_train, y_valid = train_test_split(df,target,test_size=13812,stratify=target,random_state=34)
 
 def creation_chemin(col1,col2):
-     return '/Volumes/GoogleDrive/Mon Drive/Data/images/image_train/image_' + str(col1) + '_product_' + str(col2) + '.jpg'
-data_valid['img_paths'] = np.vectorize(creation_chemin)(data_valid['imageid'],data_valid['productid'])
-data_train['img_paths'] = np.vectorize(creation_chemin)(data_train['imageid'],data_train['productid'])
+     #return '/Volumes/GoogleDrive/Mon Drive/Data/images/image_train/image_' + str(col1) + '_product_' + str(col2) + '.jpg'
+     return 'Data/images/image_' + str(col1) + '_product_' + str(col2) + '.jpg'
+#data_valid['img_paths'] = np.vectorize(creation_chemin)(data_valid['imageid'],data_valid['productid'])
+#data_train['img_paths'] = np.vectorize(creation_chemin)(data_train['imageid'],data_train['productid'])
+data['img_paths'] = np.vectorize(creation_chemin)(data['imageid'],data['productid'])
 
 
 ##### Correspondance entre les indices et les classes ####
@@ -94,7 +90,7 @@ name_classe = ["Livres d'occasion","Produits dérivés","Cartes à jouer, à col
                "Petite enfance","Mobilier intérieur","Accessoires intérieurs","Produits alimentaires","Décoration d'intérieur",
                "Produits pour animaux","Journaux, magazines","Livres","Consoles de jeux, jeux vidéos","Papèterie",
                "Mobilier extérieur, jardin","Piscines","Jardinage, bricolage","Livres, romans","Jeux vidéos en téléchargement",
-               "Jeux vidéos d'occasion","Accessoires jeux vidéos d'occasion","Consoles de jeux vidéos d'occasion"]
+               "Jeux vidéos d'occasion","Accessoires informatique, jeux vidéos","Consoles de jeux vidéos d'occasion"]
 correspondance = pd.concat([pd.Series(list_classe),pd.Series(name_classe)],axis=1)
 
 ##### Barre latérale #####
@@ -161,7 +157,7 @@ if choix==liste_choix[1]:
                 * _prdtypecode_ : codes des catégories des produits (variable cible)
                 ''')
     
-    st.dataframe(data[:10000])
+    st.dataframe(data)
 
 
     
@@ -216,11 +212,11 @@ if choix==liste_choix[2]:
 
     st.markdown('Les images accompagnant les produits de la plateforme sont très variées. La qualité des images est très inégale. Certaines peuvent présenter des bordures blanches.')
     
-    indice_produit_0 = st.slider('Choisissez un produit',1,71104)
+    indice_produit_0 = st.slider('Choisissez un produit',1,1000)
 
-    im_illustr = plt.imread(data_train.iloc[indice_produit_0-1,4])
-    text_illustr = data_train.iloc[indice_produit_0-1,0]
-    cat_illustr = y_train.iloc[indice_produit_0-1,0]
+    im_illustr = plt.imread(data.iloc[indice_produit_0-1,4])
+    text_illustr = data.iloc[indice_produit_0-1,0]
+    cat_illustr = target.iloc[indice_produit_0-1,0]
     classe_illustr = correspondance.iloc[:,1][correspondance.iloc[:,0]==str(cat_illustr)].iloc[0]
 
     st.text("Catégorie " + str(cat_illustr) + " (" + classe_illustr + ")")
@@ -298,14 +294,13 @@ if choix==liste_choix[4]:
     
 ###### Demo sur le jeu de test #####    
 if choix==liste_choix[5]:
-    st.title('Prédictions sur le jeu de validation')
+    st.title('Prédictions sur notre jeu de données')
     
-    indice_produit = st.slider('Choisissez un produit dans le jeu de validation',1,13812)
+    indice_produit = st.slider('Choisissez un produit dans le jeu de données',1,1000)
 
     ##### Chargement du Tokenizer #####
     @st.cache(show_spinner=False)
     def tokenize():
-        #tokenizer = load('/Volumes/GoogleDrive/Mon Drive/Models/tokenizer.joblib') 
         tokenizer = load('Models/tokenizer.joblib') 
         return tokenizer
 
@@ -314,7 +309,7 @@ if choix==liste_choix[5]:
     ##### Preprocessing pour le jeu de test #####
     @st.cache()
     def preprocessing_text():
-        X_valid = tokenizer.texts_to_sequences(data_valid.designation)
+        X_valid = tokenizer.texts_to_sequences(data.designation)
         X_valid = pad_sequences(X_valid,padding='post',truncating='post',maxlen=34)
         return X_valid
 
@@ -327,7 +322,6 @@ if choix==liste_choix[5]:
         output = 'EfficientNetB4_CNN_2.h5'
         gdown.download(url,output,quiet=False)
         model = load_model('EfficientNetB4_CNN_2.h5')
-        #model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
         return model
 
     model = load_nn()
@@ -338,10 +332,10 @@ if choix==liste_choix[5]:
     img = crop_resize(im)
     img = img.reshape((1,350,350,3))
     text = text.reshape((1,34,))
-    titre = data_valid.iloc[indice_produit-1,0]
+    titre = data.iloc[indice_produit-1,0]
     
     prediction = model.predict(x=[img,text])
-    y_true = y_valid.iloc[indice_produit-1,0]
+    y_true = target.iloc[indice_produit-1,0]
     classe_true = correspondance.iloc[:,1][correspondance.iloc[:,0]==str(y_true)].iloc[0]
     y_pred = list_classe[prediction.argmax()]
     classe_pred = name_classe[prediction.argmax()]
