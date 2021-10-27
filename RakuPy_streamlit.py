@@ -90,7 +90,7 @@ name_classe = ["Livres d'occasion","Produits dérivés","Cartes à jouer, à col
                "Petite enfance","Mobilier intérieur","Accessoires intérieurs","Produits alimentaires","Décoration d'intérieur",
                "Produits pour animaux","Journaux, magazines","Livres","Consoles de jeux, jeux vidéos","Papèterie",
                "Mobilier extérieur, jardin","Piscines","Jardinage, bricolage","Livres, romans","Jeux vidéos en téléchargement",
-               "Jeux vidéos d'occasion","Accessoires informatique, jeux vidéos","Consoles de jeux vidéos d'occasion"]
+               "Jeux vidéos d'occasion","Informatique, électronique","Consoles de jeux vidéos d'occasion"]
 correspondance = pd.concat([pd.Series(list_classe),pd.Series(name_classe)],axis=1)
 
 ##### Barre latérale #####
