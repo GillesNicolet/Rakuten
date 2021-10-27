@@ -143,7 +143,7 @@ if choix==liste_choix[0]:
 
 
 ##### Description du jeu de données #####
-if choix==liste_choix[2]:
+if choix==liste_choix[1]:
     st.title('Jeu de données')
     
     st.markdown("Pour entraîner et évaluer notre modèle, nous avons utilisé des données concernant des produits du catalogue de Rakuten France. Ces jeux de données sont issus du concours Rakuten Data Challenge 2020.  Ils sont disponibles sur le site du Challenge :")
@@ -164,7 +164,7 @@ if choix==liste_choix[2]:
     
     
 ##### Dataviz ######
-if choix==liste_choix[1]:
+if choix==liste_choix[2]:
     st.title('Analyse du jeu de données')
  
     st.markdown("Les produits sont classés en 27 catégories. Comme nous pouvons le voir dans la figure ci-dessous, ces catégories sont très déséquilibrées. La plus grande comprend 10209 produits. Les autres ont des effectifs compris entre 764 et 5073 articles.")
@@ -214,14 +214,14 @@ if choix==liste_choix[1]:
     
     indice_produit_0 = st.slider('Choisissez un produit',1,1000)
 
-    im_illustr = plt.imread(data.iloc[indice_produit_0-1,5])
+    #im_illustr = plt.imread(data.iloc[indice_produit_0-1,5])
     text_illustr = data.iloc[indice_produit_0-1,0]
     cat_illustr = target.iloc[indice_produit_0-1,0]
     classe_illustr = correspondance.iloc[:,1][correspondance.iloc[:,0]==str(cat_illustr)].iloc[0]
 
     st.text("Catégorie " + str(cat_illustr) + " (" + classe_illustr + ")")
     st.text(text_illustr)
-    st.image(im_illustr,caption="Figure : Articles du jeu de données avec titre, image et catégorie")
+    #st.image(im_illustr,caption="Figure : Articles du jeu de données avec titre, image et catégorie")
 
 
  
