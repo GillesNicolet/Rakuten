@@ -143,7 +143,7 @@ if choix==liste_choix[0]:
 
 
 ##### Description du jeu de données #####
-if choix==liste_choix[1]:
+if choix==liste_choix[2]:
     st.title('Jeu de données')
     
     st.markdown("Pour entraîner et évaluer notre modèle, nous avons utilisé des données concernant des produits du catalogue de Rakuten France. Ces jeux de données sont issus du concours Rakuten Data Challenge 2020.  Ils sont disponibles sur le site du Challenge :")
@@ -164,7 +164,7 @@ if choix==liste_choix[1]:
     
     
 ##### Dataviz ######
-if choix==liste_choix[2]:
+if choix==liste_choix[1]:
     st.title('Analyse du jeu de données')
  
     st.markdown("Les produits sont classés en 27 catégories. Comme nous pouvons le voir dans la figure ci-dessous, ces catégories sont très déséquilibrées. La plus grande comprend 10209 produits. Les autres ont des effectifs compris entre 764 et 5073 articles.")
