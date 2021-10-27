@@ -101,7 +101,7 @@ liste_choix = ['Le projet RakuPy',
                'Analyse du jeu de données',
                'Notre modèle',
                'Résultats',
-               'Prédictions sur le jeu de validation',
+               'Prédictions sur le jeu de données',
                'Démo']
 choix = st.sidebar.radio('',liste_choix)
 
@@ -294,7 +294,7 @@ if choix==liste_choix[4]:
     
 ###### Demo sur le jeu de test #####    
 if choix==liste_choix[5]:
-    st.title('Prédictions sur notre jeu de données')
+    st.title('Prédictions sur le jeu de données')
     
     indice_produit = st.slider('Choisissez un produit dans le jeu de données',1,1000)
 
