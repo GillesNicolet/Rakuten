@@ -157,7 +157,7 @@ if choix==liste_choix[1]:
                 * _prdtypecode_ : codes des catégories des produits (variable cible)
                 ''')
     
-    st.dataframe(data)
+    st.dataframe(data.drop('img_paths',axis=1)
 
 
     
@@ -214,7 +214,7 @@ if choix==liste_choix[2]:
     
     indice_produit_0 = st.slider('Choisissez un produit',1,1000)
 
-    im_illustr = plt.imread(data.iloc[indice_produit_0-1,4])
+    im_illustr = plt.imread(data.iloc[indice_produit_0-1,5])
     text_illustr = data.iloc[indice_produit_0-1,0]
     cat_illustr = target.iloc[indice_produit_0-1,0]
     classe_illustr = correspondance.iloc[:,1][correspondance.iloc[:,0]==str(cat_illustr)].iloc[0]
@@ -327,7 +327,7 @@ if choix==liste_choix[5]:
     model = load_nn()
     
     text = X_valid[indice_produit-1]
-    im = plt.imread(data_valid.iloc[indice_produit-1,4])
+    im = plt.imread(data_valid.iloc[indice_produit-1,5])
 
     img = crop_resize(im)
     img = img.reshape((1,350,350,3))
