@@ -314,14 +314,14 @@ if choix==liste_choix[5]:
 
     ##### Chargement du modele #####
     #@st.cache(hash_funcs={'keras.utils.object_identity.ObjectIdentityDictionary': lambda _: None})
-    def load_nn():
-        url = 'https://drive.google.com/u/0/uc?id=10-i9BY56IiO-4lApwLv4vMJnqioouEvj&export=download'
-        output = 'EfficientNetB4_CNN_2.h5'
-        gdown.download(url,output,quiet=False)
-        model = load_model('EfficientNetB4_CNN_2.h5')
-        return model
+    #def load_nn():
+    #    url = 'https://drive.google.com/u/0/uc?id=10-i9BY56IiO-4lApwLv4vMJnqioouEvj&export=download'
+    #    output = 'EfficientNetB4_CNN_2.h5'
+    #    gdown.download(url,output,quiet=False)
+    #    model = load_model('EfficientNetB4_CNN_2.h5')
+    #    return model
 
-    model = load_nn()
+    #model = load_nn()
     
     text = X_valid[indice_produit-1]
     im = plt.imread(data.iloc[indice_produit-1,5])
@@ -361,21 +361,19 @@ if choix==liste_choix[6]:
     
     if clicked_2:
         ##### Chargement du modele #####
-        #@st.cache(hash_funcs={'keras.utils.object_identity.ObjectIdentityDictionary': lambda _: None})
-        def load_nn():
-            url = 'https://drive.google.com/u/0/uc?id=10-i9BY56IiO-4lApwLv4vMJnqioouEvj&export=download'
-            output = 'EfficientNetB4_CNN_2.h5'
-            gdown.download(url,output,quiet=False)
-            model = load_model('EfficientNetB4_CNN_2.h5')
-            #model = load_model('/Volumes/GoogleDrive/Mon Drive/Models/EfficientNetB4_CNN_2.h5')
-            return model
+        ##@st.cache(hash_funcs={'keras.utils.object_identity.ObjectIdentityDictionary': lambda _: None})
+        #def load_nn():
+        #    url = 'https://drive.google.com/u/0/uc?id=10-i9BY56IiO-4lApwLv4vMJnqioouEvj&export=download'
+        #    output = 'EfficientNetB4_CNN_2.h5'
+        #    gdown.download(url,output,quiet=False)
+        #    model = load_model('EfficientNetB4_CNN_2.h5')
+        #    return model
     
-        model = load_nn()
+        #model = load_nn()
     
         ##### Chargement du Tokenizer #####
         @st.cache(show_spinner=False)
         def tokenize():
-            #tokenizer = load('/Volumes/GoogleDrive/Mon Drive/Models/tokenizer.joblib') 
             tokenizer = load('Models/tokenizer.joblib') 
             return tokenizer
 
