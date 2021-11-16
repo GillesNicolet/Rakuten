@@ -14,12 +14,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 #import tensorflow as tf
 
+
+from tensorflow import keras
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import load_model
+
+
+#from tensorflow.keras.preprocessing.sequence import pad_sequences
+#from tensorflow.keras.models import load_model
+
+
 #from sklearn.model_selection import train_test_split
 #from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
 #from tensorflow.keras import Model, Input
 #from tensorflow.keras.models import Sequential
-from tensorflow.keras.models import load_model
 #from tensorflow.keras.layers import Concatenate
 #from tensorflow.keras.layers import Dense
 #from tensorflow.keras.layers import Dropout 
@@ -35,6 +43,7 @@ from tensorflow.keras.models import load_model
 #from tensorflow.keras.applications.efficientnet import EfficientNetB4
 #from tensorflow.keras import backend as K
 #from nltk.tokenize import word_tokenize
+
 from joblib import load
 import gdown
 
