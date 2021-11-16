@@ -122,7 +122,6 @@ st.sidebar.info('''
                 Promotion Août 2021''')
 
 
-
 ##### Présentation du projet #####
 if choix==liste_choix[0]:
     st.title('Le projet RakuPy')
