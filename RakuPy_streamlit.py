@@ -12,30 +12,30 @@ import cv2
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import tensorflow as tf
+#import tensorflow as tf
 
-from sklearn.model_selection import train_test_split
-from tensorflow.keras.preprocessing.text import Tokenizer
+#from sklearn.model_selection import train_test_split
+#from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras import Model, Input
-from tensorflow.keras.models import Sequential
+#from tensorflow.keras import Model, Input
+#from tensorflow.keras.models import Sequential
 from tensorflow.keras.models import load_model
-from tensorflow.keras.layers import Concatenate
-from tensorflow.keras.layers import Dense
-from tensorflow.keras.layers import Dropout 
-from tensorflow.keras.layers import Embedding 
-from tensorflow.keras.layers import Flatten
-from tensorflow.keras.layers import InputLayer
-from tensorflow.keras.layers import Reshape
-from tensorflow.keras.layers import Conv2D 
-from tensorflow.keras.layers import MaxPooling2D
-from tensorflow.keras.layers import GlobalAveragePooling2D, Dropout
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.applications.efficientnet import EfficientNetB4
-from tensorflow.keras import backend as K
-from nltk.tokenize import word_tokenize
-from joblib import dump, load
+#from tensorflow.keras.layers import Concatenate
+#from tensorflow.keras.layers import Dense
+#from tensorflow.keras.layers import Dropout 
+#from tensorflow.keras.layers import Embedding 
+#from tensorflow.keras.layers import Flatten
+#from tensorflow.keras.layers import InputLayer
+#from tensorflow.keras.layers import Reshape
+#from tensorflow.keras.layers import Conv2D 
+#from tensorflow.keras.layers import MaxPooling2D
+#from tensorflow.keras.layers import GlobalAveragePooling2D, Dropout
+#from tensorflow.keras.optimizers import Adam
+#from tensorflow.keras.preprocessing.image import ImageDataGenerator
+#from tensorflow.keras.applications.efficientnet import EfficientNetB4
+#from tensorflow.keras import backend as K
+#from nltk.tokenize import word_tokenize
+from joblib import load
 import gdown
 
 ##### Chargement des données #####
